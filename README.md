@@ -34,3 +34,9 @@ notebooks/healthcare_bi_reports.ipynb
 dashboard/healthcare_dashboard.html
 healthcare_bi.db                   built SQLite database
 ```
+
+## Snowflake version
+
+`sql/snowflake_schema.sql` contains the equivalent Snowflake DDL, file format, stage and `COPY INTO`
+statements, plus a row-count sanity check. It has not yet been run against a Snowflake account,
+and the CSV exports it loads are not included in this repository.
