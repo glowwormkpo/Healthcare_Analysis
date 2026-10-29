@@ -33,6 +33,7 @@ scripts/run_notebook.py            executes cells.py and writes the .ipynb with 
 notebooks/healthcare_bi_reports.ipynb
 dashboard/healthcare_dashboard.html
 healthcare_bi.db                   built SQLite database
+media/                             LinkedIn charts, carousel PDF and make_media.py
 ```
 
 ## Snowflake version
@@ -51,3 +52,19 @@ python scripts/run_notebook.py
 ```
 `build_schema.py` writes `healthcare_bi.db` to the repo root, and `run_notebook.py` rewrites
 `notebooks/healthcare_bi_reports.ipynb` with fresh outputs.
+
+## LinkedIn media
+
+`media/make_media.py` builds the charts and the 6-page carousel in `media/linkedin/` from
+`healthcare_bi.db`. Run it from the repo root; it writes to `out/`.
+
+## Project history
+
+This repository's history was reorganized in October 2026. The project was originally built on
+July 14, 2026 and first uploaded as a single batch of files. The pull requests that followed
+added the remaining work as reviewable changes:
+
+1. Reorganized files into `sql/`, `scripts/`, `notebooks/` and `dashboard/`, and removed a stray SQLite journal file
+2. Added the Snowflake DDL and load script (written July 2026; restored from project notes)
+3. Made script paths portable so the project runs from a fresh clone
+4. Added the LinkedIn media and the script that generates it (October 2026)
