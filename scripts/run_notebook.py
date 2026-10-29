@@ -133,7 +133,7 @@ notebook = {
     "nbformat_minor": 5
 }
 
-with open('/tmp/nb_run/healthcare_bi_reports.ipynb', 'w') as f:
+with open('notebooks/healthcare_bi_reports.ipynb', 'w') as f:
     json.dump(notebook, f, indent=1)
 
 print("Notebook written:", len(notebook_cells), "cells,", exec_count, "executed code cells")

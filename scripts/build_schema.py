@@ -1,8 +1,11 @@
+import sys
 import pandas as pd
 import sqlite3
 import numpy as np
 
-src = "/sessions/intelligent-compassionate-gates/mnt/uploads/Health Care_Patient_survey_source.csv"
+# Usage: python scripts/build_schema.py [path/to/source.csv]
+# The CMS HCAHPS source CSV is not committed; download it and pass its path.
+src = sys.argv[1] if len(sys.argv) > 1 else "Health Care_Patient_survey_source.csv"
 df = pd.read_csv(src, dtype=str)
 
 def to_num(s):
@@ -73,7 +76,7 @@ print("survey_dim", survey_dim.shape)
 print("fact", fact.shape)
 
 # ---- Write to SQLite ----
-db_path = "/tmp/healthcare_bi.db"
+db_path = "healthcare_bi.db"  # written to the repo root, where the notebook reads it
 conn = sqlite3.connect(db_path)
 county_dim.to_sql('Dim_Country_Details', conn, if_exists='replace', index=False)
 hosp_dim.to_sql('Dim_Hospital_Details', conn, if_exists='replace', index=False)
