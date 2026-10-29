@@ -40,3 +40,14 @@ healthcare_bi.db                   built SQLite database
 `sql/snowflake_schema.sql` contains the equivalent Snowflake DDL, file format, stage and `COPY INTO`
 statements, plus a row-count sanity check. It has not yet been run against a Snowflake account,
 and the CSV exports it loads are not included in this repository.
+
+## How to run
+
+```bash
+pip install pandas numpy matplotlib
+# Download the CMS HCAHPS patient survey CSV (not committed), then from the repo root:
+python scripts/build_schema.py "path/to/Health Care_Patient_survey_source.csv"
+python scripts/run_notebook.py
+```
+`build_schema.py` writes `healthcare_bi.db` to the repo root, and `run_notebook.py` rewrites
+`notebooks/healthcare_bi_reports.ipynb` with fresh outputs.
